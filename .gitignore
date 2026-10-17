@@ -1,0 +1,23 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+terraform.tfvars
+*.auto.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local credentials and OS/editor files
+.env
+.env.*
+!.env.example
+.aws/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

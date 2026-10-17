@@ -1,0 +1,44 @@
+name: Terraform deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Existing immutable ECR image tag (normally the full Git commit SHA)"
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.8.5
+      - name: Terraform init
+        working-directory: infra
+        run: terraform init
+      - name: Terraform format check
+        working-directory: infra
+        run: terraform fmt -check -recursive
+      - name: Terraform validate
+        working-directory: infra
+        run: terraform validate
+      - name: Terraform plan
+        working-directory: infra
+        env:
+          IMAGE_TAG: ${{ inputs.image_tag }}
+        run: terraform plan -var="image_tag=$IMAGE_TAG" -out=tfplan
+      - name: Apply reviewed plan
+        working-directory: infra
+        run: terraform apply -auto-approve tfplan

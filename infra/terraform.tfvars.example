@@ -1,0 +1,10 @@
+aws_region        = "eu-west-1"
+project_name      = "focusflow"
+environment       = "dev"
+owner_tag         = "Yash-Patil"
+container_port    = 8080
+image_tag         = "bootstrap"
+desired_count     = 1
+task_cpu          = 256
+task_memory       = 512
+availability_zones = ["eu-west-1a", "eu-west-1b"]

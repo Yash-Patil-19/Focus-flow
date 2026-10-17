@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#151b2a"><meta name="description" content="FocusFlow Pomodoro timer for focused work and mindful breaks.">
+  <title>FocusFlow | Pomodoro Timer</title><link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><a class="brand" href="/" aria-label="FocusFlow home"><span class="brand-mark">F</span><span>focusflow</span></a><div class="top-actions"><span class="status"><i></i> YOUR SPACE TO FOCUS</span><button id="theme-toggle" class="icon-btn" aria-label="Toggle color theme" title="Toggle theme">☼</button></div></header>
+    <section class="intro"><p class="eyebrow">MAKE SPACE FOR WHAT MATTERS</p><h1>One thing at a time.</h1><p class="subhead">Small, focused sessions. Real progress.</p></section>
+    <section class="workspace" aria-label="Pomodoro timer">
+      <div class="timer-panel">
+        <nav class="modes" aria-label="Timer modes"><button class="mode active" data-mode="focus">Focus</button><button class="mode" data-mode="short">Short break</button><button class="mode" data-mode="long">Long break</button></nav>
+        <div class="clock-wrap"><svg class="ring" viewBox="0 0 260 260" aria-hidden="true"><circle class="ring-track" cx="130" cy="130" r="116"></circle><circle id="progress" class="ring-progress" cx="130" cy="130" r="116"></circle></svg><div class="clock"><span id="time">25:00</span><span id="session-label">TIME TO FOCUS</span></div></div>
+        <div class="timer-actions"><button id="reset" class="secondary-btn" title="Reset timer">↺</button><button id="start" class="start-btn">Start focus</button><button id="skip" class="secondary-btn" title="Skip session">↠</button></div>
+        <p class="hint" id="hint" aria-live="polite">Ready when you are. Take one thing off your list.</p>
+      </div>
+      <aside class="side-panel"><div class="panel-heading"><div><p class="eyebrow">TODAY'S RHYTHM</p><h2>Your progress</h2></div><span class="date-chip" id="today">TODAY</span></div><div class="stat-card"><span class="stat-icon">✦</span><div><strong id="completed">0</strong><span>focus sessions completed</span></div></div><div class="session-dots" id="dots" aria-label="Completed focus sessions"></div><div class="divider"></div><div class="tasks-heading"><h2>Next up</h2><span>YOUR TASKS</span></div><form id="task-form" class="task-form"><label class="sr-only" for="task-input">Add a task</label><input id="task-input" maxlength="100" placeholder="What needs your focus?" autocomplete="off"><button aria-label="Add task">+</button></form><ul id="tasks" class="task-list"></ul><p class="task-note">Keep the list short. Keep the momentum.</p></aside>
+    </section>
+    <footer><span>FOCUSFLOW</span><span>FOCUS WITH INTENTION · REST WITHOUT GUILT</span></footer>
+  </main><script src="/js/app.js" defer></script>
+</body></html>
